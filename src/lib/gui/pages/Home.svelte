@@ -146,10 +146,6 @@
                 const cols: string[] = [];
 
                 for (let i = 0; i < rows.length; i++) {
-                    if (i + 1 > 2) {
-                        break;
-                    }
-
                     const row = rows[i];
                     const record: string[] = [];
 
