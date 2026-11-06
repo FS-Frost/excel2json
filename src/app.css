@@ -1,0 +1,160 @@
+@import 'tailwindcss';
+
+/* La variante dark sigue el data-theme concreto que ponen app.html / theme.svelte.ts (nunca «system»). */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Tokens de diseño (patrón de FS-Frost/mai-docs). Los componentes usan estas utilidades (bg-surface, text-muted…),
+   nunca colores sueltos, salvo texto blanco sobre rellenos. */
+@theme inline {
+	--color-bg: var(--c-bg);
+	--color-surface: var(--c-surface);
+	--color-surface-2: var(--c-surface-2);
+	--color-line: var(--c-line);
+	--color-fg: var(--c-fg);
+	--color-muted: var(--c-muted);
+	--color-faint: var(--c-faint);
+	--color-accent: var(--c-accent);
+	--color-accent-soft: var(--c-accent-soft);
+	--color-ok: var(--c-ok);
+	--color-bad: var(--c-bad);
+	--color-warn: var(--c-warn);
+	--color-info: var(--c-info);
+	--color-json: var(--c-json);
+	--color-sheet: var(--c-sheet);
+	--color-grid: var(--c-grid);
+	--color-grid-head: var(--c-grid-head);
+	--color-grid-head-active: var(--c-grid-head-active);
+	--color-sel: var(--c-sel);
+	--color-sel-fill: var(--c-sel-fill);
+	--color-match: var(--c-match);
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--font-mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+}
+
+:root {
+	color-scheme: light;
+	--c-bg: #f3f5f4;
+	--c-surface: #ffffff;
+	--c-surface-2: #eaedeb;
+	--c-line: #d6dbd8;
+	--c-fg: #1b201d;
+	--c-muted: #535c57;
+	--c-faint: #848c88;
+	--c-accent: #1b7f4b;
+	--c-accent-soft: #dcf1e4;
+	--c-ok: #1b7f4b;
+	--c-bad: #c9343f;
+	--c-warn: #8f6200;
+	--c-info: #2b6cb8;
+	--c-json: #b4590b;
+	--c-sheet: #1b7f4b;
+	--c-grid: #e1e5e2;
+	--c-grid-head: #f2f4f3;
+	--c-grid-head-active: #d3ecdc;
+	--c-sel: #1b7f4b;
+	--c-sel-fill: rgb(27 127 75 / 0.1);
+	--c-match: #ffe58a;
+}
+
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--c-bg: #121513;
+	--c-surface: #1a1d1b;
+	--c-surface-2: #252a27;
+	--c-line: #343a36;
+	--c-fg: #e5e9e6;
+	--c-muted: #a3aca7;
+	--c-faint: #727a76;
+	--c-accent: #4cc98a;
+	--c-accent-soft: #1f3a2b;
+	--c-ok: #4cc98a;
+	--c-bad: #f0656e;
+	--c-warn: #e6b450;
+	--c-info: #6aa6e8;
+	--c-json: #f0a35e;
+	--c-sheet: #4cc98a;
+	--c-grid: #2c312e;
+	--c-grid-head: #1f2321;
+	--c-grid-head-active: #24432f;
+	--c-sel: #4cc98a;
+	--c-sel-fill: rgb(76 201 138 / 0.14);
+	--c-match: #6b5a12;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: var(--c-bg);
+	color: var(--c-fg);
+	font-family: var(--font-sans);
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Controles compartidos (de mai-docs). */
+@layer components {
+	.btn {
+		@apply inline-flex items-center justify-center gap-1.5 rounded-md border border-line bg-surface px-3 py-1.5 text-sm text-fg transition-colors select-none hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-50;
+	}
+	.btn-primary {
+		@apply border-transparent bg-accent text-white hover:bg-accent/90 dark:text-[#0d1a12];
+	}
+	.btn-ghost {
+		@apply border-transparent bg-transparent hover:bg-surface-2;
+	}
+	.btn-danger {
+		@apply border-transparent bg-bad text-white hover:bg-bad/90;
+	}
+	.tb {
+		@apply inline-flex h-8 min-w-8 items-center justify-center gap-1 rounded px-1.5 text-sm text-fg select-none hover:bg-surface-2 disabled:opacity-40 disabled:hover:bg-transparent aria-pressed:bg-accent-soft aria-pressed:text-accent;
+	}
+	.tb-sep {
+		@apply mx-1 h-5 w-px shrink-0 bg-line;
+	}
+	.input {
+		@apply rounded-md border border-line bg-surface px-2.5 py-1.5 text-sm text-fg outline-none focus:border-accent;
+	}
+	.select {
+		@apply h-8 rounded border border-line bg-surface px-1.5 text-sm text-fg outline-none focus:border-accent;
+	}
+	.check {
+		@apply size-4 shrink-0 accent-accent;
+	}
+	.menu {
+		@apply z-50 min-w-48 rounded-lg border border-line bg-surface py-1 shadow-xl;
+	}
+	.menu-item {
+		@apply flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm text-fg hover:bg-surface-2 focus:bg-surface-2 focus:outline-none disabled:opacity-40;
+	}
+	.menu-sep {
+		@apply my-1 h-px bg-line;
+	}
+	.panel {
+		@apply rounded-xl border border-line bg-surface;
+	}
+	.panel-title {
+		@apply text-xs font-semibold tracking-wide text-muted uppercase;
+	}
+	.seg {
+		@apply inline-flex rounded-md border border-line bg-surface-2 p-0.5;
+	}
+	.seg > button {
+		@apply rounded px-2.5 py-1 text-sm text-muted aria-pressed:bg-surface aria-pressed:text-fg aria-pressed:shadow-sm;
+	}
+}
+
+:focus-visible {
+	outline: 2px solid var(--c-accent);
+	outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 1ms !important;
+		animation-duration: 1ms !important;
+	}
+}

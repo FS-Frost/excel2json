@@ -1,29 +1,38 @@
 {
 	"name": "excel2json",
 	"private": true,
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
+		"dev": "bun --bun vite dev",
+		"build": "bun --bun vite build",
+		"preview": "bun --bun vite preview",
+		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"test": "bun test"
 	},
-	"dependencies": {
-		"@zip.js/zip.js": "^2.7.62",
-		"exceljs": "^4.4.0",
-		"sweetalert2": "^11.22.2",
-		"zod": "^3.25.73"
+	"imports": {
+		"#lib/*": "./src/lib/*"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.3.1",
-		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.22.2",
-		"@sveltejs/vite-plugin-svelte": "^4.0.4",
-		"svelte": "^5.35.2",
-		"svelte-check": "^4.2.2",
-		"typescript": "^5.8.3",
-		"vite": "^5.4.19"
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^3.1.0",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@tailwindcss/vite": "^4.3.4",
+		"@types/bun": "^1.4.4",
+		"@types/papaparse": "^5.5.2",
+		"fake-indexeddb": "6.0.0",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.7.7",
+		"tailwindcss": "^4.3.4",
+		"typescript": "^6",
+		"vite": "^8.3.4"
+	},
+	"dependencies": {
+		"exceljs": "^4.4.0",
+		"fflate": "^0.8.3",
+		"idb": "^8.0.4",
+		"papaparse": "^5.7.0",
+		"zod": "^4.1.0"
 	}
 }
