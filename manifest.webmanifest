@@ -1,0 +1,33 @@
+{
+	"name": "excel2json",
+	"short_name": "excel2json",
+	"description": "Convert and edit Excel, CSV and JSON in your browser. Nothing is uploaded. / Convierte y edita Excel, CSV y JSON en tu navegador.",
+	"start_url": ".",
+	"scope": ".",
+	"display": "standalone",
+	"background_color": "#f3f5f4",
+	"theme_color": "#1b7f4b",
+	"lang": "en",
+	"categories": ["productivity", "utilities", "developer"],
+	"icons": [
+		{ "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+		{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+		{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{ "src": "icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+		{ "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+	],
+	"shortcuts": [
+		{ "name": "Example / Ejemplo", "short_name": "Demo", "url": "?demo", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+	],
+	"file_handlers": [
+		{
+			"action": ".",
+			"accept": {
+				"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
+				"text/csv": [".csv"],
+				"text/tab-separated-values": [".tsv"],
+				"application/json": [".json"]
+			}
+		}
+	]
+}

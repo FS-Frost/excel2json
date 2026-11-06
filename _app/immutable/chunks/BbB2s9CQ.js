@@ -1,0 +1,1 @@
+import"./COGys2FG.js";

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="description" content="Convert and edit Excel, CSV and JSON in your browser. Nothing is uploaded." />
+		<script>
+			// Antes de pintar: tema concreto (light/dark) e idioma. Ver lib/client/theme.svelte.ts y lib/i18n.
+			(function () {
+				var root = document.documentElement;
+				try {
+					var t = localStorage.getItem('excel2json.theme');
+					var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+					root.dataset.theme = dark ? 'dark' : 'light';
+				} catch (e) {
+					root.dataset.theme = 'light';
+				}
+				try {
+					var l = localStorage.getItem('excel2json.lang');
+					if (l !== 'es' && l !== 'en') {
+						var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+						l = 'en';
+						for (var i = 0; i < langs.length; i++) if (/^es\b/i.test(langs[i])) l = 'es';
+					}
+					root.lang = l;
+				} catch (e) {}
+			})();
+		</script>
+		<link rel="icon" href="/excel2json/favicon.svg" />
+		<link rel="apple-touch-icon" href="/excel2json/apple-touch-icon.png" />
+		<link rel="manifest" href="/excel2json/manifest.webmanifest" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="excel2json" />
+		<link href="/excel2json/_app/immutable/entry/start.Du6o-7eT.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/CCMZs0eX.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/ChxGfadO.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/BT911HSV.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/COGys2FG.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/entry/app.DAARIKS0.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/nodes/0.Dnmbtx_Q.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/DXfooC1o.js" rel="modulepreload">
+		<link href="/excel2json/_app/immutable/chunks/BbB2s9CQ.js" rel="modulepreload">
+		
+		<link href="/excel2json/_app/immutable/assets/0.DoyQiXj4.css" rel="stylesheet">
+	</head>
+	<body>
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_brsv6b = {
+						base: "/excel2json",
+						version: "fea4a76",
+						assets: "/excel2json"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("/excel2json/_app/immutable/entry/start.Du6o-7eT.js").then(async (kit) => {
+						kit.init(__sveltekit_brsv6b);
+						const app = await import("/excel2json/_app/immutable/entry/app.DAARIKS0.js");
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
